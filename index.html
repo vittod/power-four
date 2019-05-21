@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="style.css">
+        <title>power four</title>
+    </head>
+    <body>
+        <nav>
+            <div class="Logo">
+                <h1>Power <span class="red">F</span><span class="blue">o</span><span class="red">u</span><span class="blue">r</span></h1>
+            </div>
+            <div class="btn reset" type="submit">
+                <h2>reset game</h2>
+            </div>
+        </nav>
+        <section id="game">
+
+            <div id="trigger-area">
+                <div class="trigger-point"></div>
+            </div>
+
+            <div id="board">
+                <div class="column">
+                    <div class="slot row1">
+                    </div>
+                    <div class="slot row2">
+                    </div>
+                    <div class="slot row3">
+                    </div>
+                    <div class="slot row4">
+                    </div>
+                    <div class="slot row5">
+                    </div>
+                    <div class="slot row6">
+                    </div>
+                </div>
+            </div>
+
+            <div id="board-overlay">
+                <div class="column-overlay">
+                    <div class="slot-overlay">
+                    </div>
+                    <div class="slot-overlay">
+                    </div>
+                    <div class="slot-overlay">
+                    </div>
+                    <div class="slot-overlay">
+                    </div>
+                    <div class="slot-overlay">
+                    </div>
+                    <div class="slot-overlay">
+                    </div>
+                </div>
+            </div>
+
+            <div id="board-bg"></div>
+
+            <div id="coinstack-red">
+                <div class="playerRed"></div>
+            </div>
+            <div id="coinstack-blue">
+                <div class="playerBlue"></div>
+            </div>
+
+        </section>
+
+        <div class="modal start on">
+            <div class="intro">
+                <div class="modal-header">
+                    <h2>Welcome Players !</h2>
+                    <h3>How many columns would you like to play?</h3>
+                </div>
+                <select id="select-colums">
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
+                <div class="btn" type=submit>
+                    Start Game
+                </div>
+            </div>
+        </div>
+        <div class="modal win">
+            <div class="message">
+                <div class="btn reset">Play again ?</div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="power.js"></script>
+    </body>
+</html>

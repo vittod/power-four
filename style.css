@@ -1,0 +1,297 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+@font-face {
+  font-family: 'smoother';
+  src: url('font/Smoother.otf');
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+nav {
+    height: 30px;
+    width: 100%;
+    background: lightgrey;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    font-family: smoother;
+    padding-left: 5px;
+    padding-right: 5px;
+
+}
+nav div {
+    padding: 2px;
+}
+nav .logo {
+    pointer-events: none;
+}
+.red {
+    color: red;
+}
+.blue {
+    color: blue;
+}
+.btn {
+    color: teal;
+}
+.btn:hover {
+    color: white;
+    cursor: pointer;
+}
+
+#game {
+    width: 100%;
+    height: calc(100vh - 30px);
+    top: 30px;
+    position: absolute;
+    background: rgba(0, 0, 0, 1);
+    overflow: hidden;
+    z-index: -500;
+}
+
+#trigger-area {
+    position: absolute;
+    top: 20px;
+    width: 54px;
+    height: 80px;
+    left: calc(50% - 27px);
+    display: flex;
+    justify-content: center;
+}
+.trigger-point {
+    width: 100%;
+    height: 70%;
+    border-radius: 50%;
+}
+
+.trigger-point:hover {
+    background: ghostwhite;
+    opacity: 0.3;
+}
+
+#board {
+    left: calc(50% - 27px - 5rem);
+    position: absolute;
+    height: 304px;
+    width: 54px;
+    border: 2px solid grey;
+    margin: 5rem;
+    display: flex;
+}
+#board-overlay {
+    pointer-events: none;
+    left: calc(50% - 27px - 5rem);
+    position: absolute;
+    height: 304px;
+    width: 54px;
+    margin: 5rem;
+    display: flex;
+    border: 2px solid transparent;
+}
+#board-bg {
+    background: darkgrey;
+    position: absolute;
+    height: 304px;
+    width: 54px;
+    margin: 5rem;
+    border: 2px solid transparent;
+    left: calc(50% - 27px - 5rem);
+    z-index: -25;
+}
+
+.slot {
+    height: 50px;
+    width: 50px;
+    z-index: 50;
+    overflow: hidden;
+}
+.slot-overlay {
+    pointer-events: none;
+    height: 50px;
+    width: 50px;
+    z-index: 1000;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.slot-overlay::before {
+    pointer-events: none;
+    display: inline-block;
+    content: '';
+    height: 80%;
+    width: 100%;
+    border-radius: 50%;
+    box-shadow: 0 0 0 400px rgba(33,33,33,1);
+    border: solid 5px rgba(43,43,43,1);
+    z-index: 1000;
+}
+.playerRed {
+    height: 50px;
+    width: 50px;
+    background: red;
+    border-radius: 50%;
+    z-index: 50;
+    border: 1px solid darkgrey;
+}
+.playerBlue {
+    height: 50px;
+    width: 50px;
+    background: blue;
+    border-radius: 50%;
+    z-index: 50;
+    border: 1px solid darkgrey;
+}
+
+#coinstack-red {
+    float: left;
+    width: 150px;
+    height: 150px;
+    background: transparent;
+    top: 54%;
+    left: 3%;
+    position: relative;
+    z-index: -50;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+#coinstack-blue {
+    float: right;
+    width: 150px;
+    height: 150px;
+    background: transparent;
+    top: 54%;
+    right: 3%;
+    position: relative;
+    z-index: -50;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+#coinstack-blue .playerBlue:hover, #coinstack-red .playerRed:hover {
+    /* animation: select-hover 1s infinite; */
+    opacity: 0.7;
+}
+.insert {
+    position: absolute;
+    z-index: 5000;
+    top: 50%;
+}
+.insert.playerBlue {
+    right: 0;
+}
+.drop {
+    animation: drop-coin 1s;
+}
+
+.modal {
+    background: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    visibility: hidden;
+    z-index: 5000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.on {
+    visibility: visible !important;
+}
+.message {
+    height: 10rem;
+    width: 17rem;
+    background: gold;
+    text-align: center;
+    border: 3px solid grey;
+    border-radius: 10px;
+    font-family: smoother;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.intro {
+    height: 15rem;
+    width: 17rem;
+    background: darkgrey;
+    border: 2px solid lightgrey;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-family: smoother;
+}
+.modal-header {
+    border-bottom: 2px solid lightgrey;
+}
+.intro .btn, .message .btn {
+    border: 2px solid lightgrey;
+    border-radius: 10px;
+    text-align: center;
+    padding: 0.5rem;
+}
+.modal-header h3 {
+    padding: 1rem;
+}
+.modal-header h2 {
+    padding-left: 1rem;
+}
+
+.indicator {
+    animation: select 1s infinite;
+}
+.win {
+    animation: winer 1s infinite;
+}
+
+@keyframes select {
+    0%, 100% {
+        box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 15px 15px rgba(255, 255, 255, 0.8);
+    }
+
+}
+@keyframes winer {
+    0%, 100% {
+        box-shadow: inset 0 0 5px 5px rgba(255, 255, 255, 0.4);
+    }
+    50% {
+        box-shadow: inset 0 0 15px 15px rgba(255, 255, 255, 0.8);
+    }
+
+}
+@keyframes select-hover {
+    0%, 100% {
+        background: ghostwhite;
+        opacity: 0.1;
+    }
+    50% {
+        background: ghostwhite;
+        opacity: 0.4;
+    }
+
+}
+@keyframes drop-coin {
+    0% {
+        transform: translateY(-900%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
